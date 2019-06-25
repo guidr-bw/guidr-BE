@@ -18,29 +18,6 @@ function get(id){
     .first()
 }
 
-/*
-select t.id, t.user_id, t.title, t.shortDescription, t.description, t.isProfessional, t.duration, t.distance, t.date, t.image
-from trips as t
-innerjoin tripTypes as p
-where t.type = p.id
-
-
-select ('id', "user_id", "title", "shortDescription", "description", "isProfessional", "tripTypes.type","duration", "distance", "date", "image") 
-from ('trps')
-innerJoin('tripTypes')
-where "trips.type" is "tripType.id"
-*/
-/*
-
-//getTripByTripId
-function get(id){
-    return db('trips')
-    .where( { id })
-    .first()
-}
-*/
-
-
 //getTripByfilter
 function getBy(filter) {
     return db('trips')
