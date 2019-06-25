@@ -15,7 +15,7 @@ router.post('/register', validateUserData,  (req, res) => {
             const token = generateToken(user);
             user.token = token;
             user.password = undefined
-            res.status(201).json(user);
+            res.status(201).json({id: user.id, username: user.username, token});
         })
         .catch(error => {
             res.status(500).json({messate: "Error registering", error: error.toString()})
@@ -31,7 +31,7 @@ router.post('/login', validateLoginCreds, (req, res) => {
             const token = generateToken(user);
             user.token = token
             user.password = undefined;
-            res.status(200).json(user);
+            res.status(200).json({id: user.id, username: user.username, token});
         } else {
             res.status(401).json({message: "Invalid Credential."})
         }
@@ -42,9 +42,9 @@ router.post('/login', validateLoginCreds, (req, res) => {
 })
 
 //updating profile, not including password
-router.put('/:id/update', validateId, verifyToken, validateUpdateData,  (req, res) => {
+router.put('/update', verifyToken, validateUpdateData,  (req, res) => {
     const changes = req.body
-    Users.update(req.params.id, changes)
+    Users.update(req.user.id, changes)
         .then( user => {
             if(user) {
                 const token = generateToken(user) //generating new token in case username was changed 
@@ -126,7 +126,7 @@ function validateUserData(req, res, next) {
 
 //this function is to check the new username is not already in use by another user
 function validateUpdateData(req, res, next) {
-    if(req.user.id == req.params.id) { // permission
+    if(req.user.id) { // permission
     //only need to perform the following if user wish to change username --> checking for username duplication
         if(req.body.username && req.body.username !== req.user.username) {
             const username = req.body.username

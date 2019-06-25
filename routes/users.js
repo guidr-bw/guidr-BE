@@ -3,8 +3,8 @@ const router = require('express').Router();
 const Users = require('../models/users.js');
 const verifyToken = require('../middlewares/verifyToken.js');
 
-router.get('/:id', verifyToken, validateId, restricted, (req, res) => {
-    Users.get(req.params.id)
+router.get('/', verifyToken,  (req, res) => {
+    Users.get(req.user.id)
     .then( user => {
         user.password = undefined;
         res.status(200).json(user)
@@ -14,8 +14,8 @@ router.get('/:id', verifyToken, validateId, restricted, (req, res) => {
     })
 })
 
-router.get('/:id/trips', verifyToken, validateId, restricted, (req, res) => {
-    Users.getUserTrips(req.params.id)
+router.get('/trips', verifyToken, (req, res) => {
+    Users.getUserTrips(req.user.id)
     .then( response => {
         res.status(200).json(response)
     })

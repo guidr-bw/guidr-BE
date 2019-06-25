@@ -1,11 +1,16 @@
 const db = require("../data/dbConfig.js")
 
 module.exports = {
+    getAll,
     get,
     getBy,
     insert,
     remove,
     update
+}
+
+function getAll() {
+    return db('tripTypes')
 }
 
 function get(id){
