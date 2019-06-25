@@ -46,7 +46,7 @@ function update(id, changes) {
 async function getUserTrips(id) {
     const user_id = id
     const trips =  await db('trips')
-    .select(['title', 'shortDescription', 'image'])
+    .select(['id','title', 'shortDescription', 'image'])
     .where({ user_id })
     const sumResult = await getTotalDuration(id)
     const sumDuration = Array.from(sumResult)[0]

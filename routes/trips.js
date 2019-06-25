@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const verifyToken = require('../middlewares/verifyToken.js');
 const Trips = require('../models/trips.js');
-const Users = require('../models/users.js')
+const Types = require('../models/tripTypes.js')
 
 router.get("/:id",  verifyToken, validateId, restricted, (req, res) => {
     res.status(200).json(req.trip)
@@ -37,6 +37,16 @@ router.delete("/:id", verifyToken, validateId, restricted, (req, res) => {
     .catch( error => {
         res.status(500).json({messate: "Error deleting trip", error: error.toString()})
 
+    })
+})
+
+router.get("/list/types", (req,res) => {
+    Types.getAll()
+    .then( trips => {
+        res.status(200).json(trips)
+    })
+    .catch( error => {
+        res.status(500).json({message: "Error retriving trip types", error: error.toString()})
     })
 })
 
