@@ -104,7 +104,7 @@
         duration: 3,
         distance: 500,
         date: "2018-11-01",
-        img: "http://imgURL
+        image: "http://imgURL
     }
 
 
@@ -132,7 +132,7 @@
         shortDescription: "new short description,
         description: "trip long description,
         isProfessional: 1,
-        type: 1,
+        type: "backpacking,
         duration: 6,
         distance: 300,
         date: "2018-5-12",

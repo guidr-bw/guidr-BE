@@ -8,10 +8,13 @@ module.exports = {
     update
 }
 
-//getTripByTripId
+
 function get(id){
-    return db('trips')
-    .where( { id })
+    return db
+    .select ('trips.id', "trips.user_id", "trips.title", "trips.shortDescription", "trips.description", "trips.isProfessional", "tripTypes.type", "trips.duration", "trips.distance", "trips.date", "trips.image") 
+    .from('trips')
+    .innerJoin('tripTypes', 'trips.type', 'tripTypes.id')
+    .where({ 'trips.id' : id })
     .first()
 }
 
