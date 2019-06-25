@@ -17,7 +17,7 @@ server.use('/api/trip', tripsRoute)
 server.use('/api/user', usersRoute)
 
 server.get('/', (req, res) => {
-    res.send("It's Working!");
+    res.send("It's Working! SMile");
 })
 
 module.exports = server;

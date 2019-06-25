@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/skysthelimit68/Guidr_BackEnd.git"
+    "url": "git+https://github.com/guidr-bw/guidr-BE.git"
   },
   "keywords": [],
   "author": "Ming Liu <mliu@brooksidemediaco.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/skysthelimit68/Guidr_BackEnd/issues"
+    "url": "https://github.com/guidr-bw/guidr-BE/issues"
   },
-  "homepage": "https://github.com/skysthelimit68/Guidr_BackEnd#readme",
+  "homepage": "https://github.com/guidr-bw/guidr-BE#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
@@ -32,6 +32,8 @@
     "sqlite3": "^4.0.9"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "apidoc": "^0.17.7"
+
   }
 }
