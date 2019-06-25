@@ -3,13 +3,24 @@ const router = require('express').Router();
 const Users = require('../models/users.js');
 const verifyToken = require('../middlewares/verifyToken.js');
 
+router.get('/:id', verifyToken, validateId, restricted, (req, res) => {
+    Users.get(req.params.id)
+    .then( user => {
+        user.password = undefined;
+        res.status(200).json(user)
+    })
+    .catch( error => {
+        res.status(500).json({ message: "Error connecting to database", error: error.toString()})
+    })
+})
+
 router.get('/:id/trips', verifyToken, validateId, restricted, (req, res) => {
     Users.getUserTrips(req.params.id)
     .then( response => {
         res.status(200).json(response)
     })
     .catch( error => {
-        res.status(500).json({messate: "Error registering", error: error.toString()})
+        res.status(500).json({message: "Error registering", error: error.toString()})
     })
 })
 
