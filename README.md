@@ -104,7 +104,7 @@
         duration: 3,
         distance: 500,
         date: "2018-11-01",
-        img: "http://imgURL
+        image: "http://imgURL
     }
 
 
